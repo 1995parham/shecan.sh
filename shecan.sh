@@ -20,9 +20,10 @@ usage() {
 }
 
 reset=false
+setup=false
 shecan="178.22.122.100"
 # parses options flags
-while getopts 'rhp:' argv; do
+while getopts 'rshp:' argv; do
         case $argv in
                 h)
                         usage
@@ -30,6 +31,9 @@ while getopts 'rhp:' argv; do
                         ;;
                 r)
                         reset=true
+                        ;;
+                s)
+                        setup=true
                         ;;
                 p)
                         shecan=$OPTARG
@@ -47,11 +51,11 @@ fi
 
 # sets or rests shecan DNS in OSx
 if [[ "$OSTYPE" == "darwin"* ]]; then
-        if [ reset = true ]; then
+        if [ "$reset" = true ]; then
                 echo "Resets DNS to DHCP defaults"
                 networksetup -setdnsservers Wi-Fi empty
         fi
-        if [ set = true ]; then
+        if [ "$setup" = true ]; then
                 echo "Sets DNS to Awesome shecan $shecan"
                 networksetup -setdnsservers Wi-Fi $shecan
         fi
