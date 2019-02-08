@@ -20,7 +20,7 @@ Do you want to use shecan? (OSx Only)
 ./shecan.sh -s -p 94.232.174.194
 ```
 
-Do you want your default DNS?
+Do you want your default DNS? (OSx Only)
 ```
 ./shecan.sh -r
 ```
